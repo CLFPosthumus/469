@@ -1,0 +1,50 @@
+.single-product .product_infos p.price:nth-child(1) {
+  display: none; }
+
+.woocommerce_de_versandkosten {
+  font-size: 14px;
+  text-transform: capitalize; }
+
+.shipping_de_string small span {
+  font-size: 14px;
+  text-transform: capitalize; }
+
+.archive .products-grid li .product_german_market_info .price {
+  margin-top: 5px; }
+
+.archive .products-grid li .product_german_market_info .woocommerce_de_versandkosten a {
+  display: inline; }
+
+.archive .products-grid li .product_german_market_info .woocommerce_de_versandkosten {
+  padding: 0px;
+  display: inline;
+  margin-top: -20px;
+  text-transform: capitalize; }
+
+.archive .products-grid li .product_german_market_info .price-per-unit {
+  display: block;
+  margin-top: -15px; }
+
+.archive .products-grid li .product_german_market_info .woocommerce-de_price_taxrate {
+  margin-top: -12px;
+  margin-bottom: -5px; }
+
+.archive .products-grid li .product_after_shop_loop_switcher {
+  height: 140px; }
+
+.archive .products-grid li .product_after_shop_loop {
+  height: 110px; }
+
+.widget_shopping_cart_content .jde_hint {
+  padding: 0px 30px;
+  color: #FFF;
+  font-size: 13px;
+  letter-spacing: inherit;
+  text-align: left; }
+
+.widget_shopping_cart_content .jde_hint a {
+  color: #FFF;
+  font-size: 13px; }
+
+.shopkeeper-mini-cart.open {
+  max-height: 700px; }

@@ -1,0 +1,268 @@
+//==============================================================================
+// Product Layout 3 / Product Images Wrapper
+//==============================================================================
+
+.product-images-wrapper
+{
+
+	.product-images-style-3
+	{
+		display: none;
+	
+		@media (min-width:1024px)
+		{
+			display: block;
+		}
+	}
+
+	.product_title
+	{
+		text-align: left;  
+		z-index: 999; 
+		margin-bottom: 0;
+		padding: 30px; 
+		
+		&.for-desktop
+		{
+			position: absolute;
+			top: -4px;
+			margin-bottom: 50px; 
+			padding: 0;
+		}
+	}
+
+	.images
+	{
+		float: none !important;
+		width: auto !important;
+		margin: 0 !important;
+	}
+	 
+	.product_images
+	{
+		font-size: 0;
+		
+		.product-image
+		{
+			position: relative;
+			vertical-align: middle;
+			margin-bottom: 25px;
+			
+			.easyzoom.el_zoom
+            {
+                img
+                {
+                    cursor: url(../images/cursor-zoom.png), auto;
+                }
+            }
+			
+			&.mobile
+			{
+				display: none;
+			}
+
+			.desktop-image
+			{
+				display: block;
+			}
+			
+			&:first-child
+			{
+				width: 100%; 
+				
+				img
+				{
+					padding: 0;
+				}
+			} 
+			
+			img
+			{
+			   width: 100%;
+			}
+			 
+			.caption
+			{
+				padding: 30px 0 40px;
+				max-width: 50%; 
+				
+				&:before
+				{
+					content: "";
+					width: 50px;
+					height: 1px; 
+					margin-right: 20px; 
+					display: inline-block;	
+					vertical-align: super;					    
+				} 
+			}
+           
+		}
+
+		.product-video-icon
+		{
+			display: none;
+		}
+
+		.product-images-controller
+		{
+			position: fixed;
+			list-style-type: none;
+			margin: 0;
+			z-index: 9;  
+			
+			li.video-icon
+			{
+				.dot
+				{
+					border: 2px solid; 
+					width: 18px;
+					height: 18px;  
+					font-size: 8px; 
+					margin: 0;
+					
+					&.current
+					{
+						border-color: transparent; 
+					}
+					
+					i
+					{
+						color: #FFF; 
+						font-size: 6px; 
+						text-align: center;
+						vertical-align: middle;
+						margin-left: 1px;   
+					}
+				} 
+			}
+			
+			.dot
+			{
+				width: 8px;
+				height: 8px;
+				border: 1px solid; 
+				border-radius: 100%;
+				transition: all .5s;
+				margin: 13px auto;
+				display: block;
+				text-align: center;
+				
+				&:first-child
+				{
+					margin-top: 0;
+				}
+				
+				&.current
+				{
+					border-color: transparent; 
+				}
+			}
+
+		}
+		
+	}
+	
+}
+
+
+.mobile_gallery,
+.mobile_gallery_thumbs
+{
+    display: none;
+    
+    @media (max-width: 1023px)
+    {
+        display: block;
+    }
+}
+
+.mobile_gallery
+{
+    img
+    {
+        width: 100%; 
+    }
+    
+    .swiper-slide
+    {
+    	&.video
+    	{
+    		height: 100px;
+    		font-size: 100px;
+    		text-align: center;  
+    	}
+    }
+
+    .swiper-lazy-preloader
+    {
+        animation: none;
+        
+        &:after
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 9;
+            content: ""; 
+            height: 100%;
+            width: 100%; 
+            background: url('../images/morph-shape-gif-preloader.gif') center no-repeat;
+            background-size: auto 15px;
+        }
+    }
+}
+
+
+.mobile_gallery_thumbs
+{
+    height: 100px;
+    box-sizing: border-box;
+
+	
+	@media (min-width: 640px)
+	{
+		margin-left: 0;
+		margin-right: 0; 
+	}
+	
+    .swiper-wrapper
+    {
+        list-style-type: none;
+        padding: 0;
+        margin: 0 0 0 -37.5%;
+
+         
+        .swiper-slide
+        {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+            background-size: cover;
+            background-position: center center;
+
+            
+            &.youtube
+            {
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				text-align: center;
+            	
+            	> i
+            	{
+            		font-size: 50px; 
+            	}
+            }
+
+        }
+
+        .swiper-slide-active
+        {
+            opacity: 1;
+        }
+    }
+    
+}
