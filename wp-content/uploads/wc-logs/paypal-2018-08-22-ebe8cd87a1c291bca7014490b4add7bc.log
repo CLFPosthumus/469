@@ -1,0 +1,38 @@
+2018-08-22T12:27:21+00:00 INFO Generating payment form for order 2892. Notify URL: http://localhost/wc-api/WC_Gateway_Paypal/
+2018-08-22T12:27:21+00:00 INFO PayPal Request Args for order 2892: Array
+(
+    [cmd] => _cart
+    [business] => cerielposthumus@hotmail.com
+    [no_note] => 1
+    [currency_code] => GBP
+    [charset] => utf-8
+    [rm] => 1
+    [upload] => 1
+    [return] => http://localhost/checkout/order-received/2892/?key=wc_order_5b7d56a96bca6&utm_nooverride=1
+    [cancel_return] => http://localhost/cart/?cancel_order=true&order=wc_order_5b7d56a96bca6&order_id=2892&redirect&_wpnonce=7bcaf1e605
+    [page_style] => 
+    [image_url] => 
+    [paymentaction] => sale
+    [bn] => WooThemes_Cart
+    [invoice] => WC-2892
+    [custom] => {"order_id":2892,"order_key":"wc_order_5b7d56a96bca6"}
+    [notify_url] => http://localhost/wc-api/WC_Gateway_Paypal/
+    [first_name] => ***
+    [last_name] => ***
+    [address1] => ***
+    [address2] => ***
+    [city] => ***
+    [state] => ***
+    [zip] => ***
+    [country] => ***
+    [email] => ***@***
+    [night_phone_b] => ***
+    [address_override] => 0
+    [no_shipping] => 0
+    [tax_cart] => 0.00
+    [item_name_1] => The Short Cheeky Rascals Love Tee In Black & White - Midnight Green
+    [quantity_1] => 2
+    [amount_1] => 10000
+    [item_number_1] => 123123123123123
+)
+
