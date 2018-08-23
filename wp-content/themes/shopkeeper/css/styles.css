@@ -13041,7 +13041,9 @@ select.wcml_currency_switcher,
 .site-branding img {
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-transition: all 0.3s; }
+  -webkit-transition: all 0.3s;
+
+     }
 
 .site-branding a {
   display: inline-block; }
@@ -13070,7 +13072,7 @@ select.wcml_currency_switcher,
 
 .sticky-logo {
   display: none;
-  max-height: 33px;
+  max-height: 50px;
   max-width: auto; }
 
 #site-menu {
@@ -13246,7 +13248,8 @@ select.wcml_currency_switcher,
     height: auto; }
   .site-branding img {
     text-align: center;
-    height: auto; }
+    height: auto; 
+ }
   .site-tools ul .wishlist-button,
   .site-tools ul .my_account_icon,
   .site-tools ul .search-button {
@@ -28960,9 +28963,27 @@ p.wp-block-subhead {
           width: 100%;
           margin-left: 0;
           left: 0; } }
+		  
+  
   .wp-block-cover-image.has-right-content .wp-block-cover-image-text {
     position: absolute; }
   .wp-block-cover-image.has-left-content .wp-block-cover-image-text {
     position: absolute; }
   .wp-block-cover-image .wp-block-cover-image-text {
     font-weight: bold; }
+	
+/*edited*/
+
+
+	@media only screen and (min-width: 641px){ 
+	.sticky-logo {
+	 margin-top:-10px; 
+	 }
+}
+
+  @media only screen and (min-width: 63.9375em){
+.site-header.sticky .main-navigation, .site-header.sticky .site-tools, .site-header.sticky .site-branding img {
+    height: 66px !important;
+    line-height: 66px !important;
+    width: auto;}
+  }
