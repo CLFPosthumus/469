@@ -1261,3 +1261,26 @@ if ( !function_exists('shopkeeper_loop_columns_class')):
 		echo $shopkeeper_theme_options['mobile_columns'] == 1 ? 'small-up-1' : 'small-up-2'; ?> medium-up-<?php echo $products_per_column_medium; ?> large-up-<?php echo $products_per_column_large; ?> xlarge-up-<?php echo $products_per_column_xlarge; ?> xxlarge-up-<?php echo $products_per_column;
 	}
 endif;
+
+/*custom code*/
+function custom_login_logo() {
+    echo '<style type ="text/css">.login h1 a { display:none!important; }</style>';
+}
+
+add_action('login_head', 'custom_login_logo');
+
+
+function annointed_admin_bar_remove() {
+	global $wp_admin_bar;
+
+	/* Remove their stuff */
+	$wp_admin_bar->remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
+
+function remove_footer_admin () 
+{
+    echo '';
+}
+ 
+add_filter('admin_footer_text', 'remove_footer_admin');
