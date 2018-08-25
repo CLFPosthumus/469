@@ -97,13 +97,16 @@
 					$this->cacheFilePath = $this->getWpContentDir()."/cache/all/".$_SERVER["REQUEST_URI"];
 				}
 			}
-			
+
 			//WPML language switch
 			//https://wpml.org/forums/topic/wpml-language-switch-wp-fastest-cache-issue/
-			if($this->isPluginActive('sitepress-multilingual-cms/sitepress.php')){
-				$current_language = apply_filters('wpml_current_language', false);
-				$this->cacheFilePath = str_replace('/cache/all/', '/cache/all/'.$current_language.'/', $this->cacheFilePath);
+			$language_negotiation_type = apply_filters('wpml_setting', false, 'language_negotiation_type');
+			if ($this->isPluginActive('sitepress-multilingual-cms/sitepress.php') && 2 == $language_negotiation_type){
+			    $current_language = apply_filters('wpml_current_language', false);
+			    $this->cacheFilePath = str_replace('/cache/all/', '/cache/all/'.$current_language.'/', $this->cacheFilePath);
 			}
+
+
 
 			$this->cacheFilePath = $this->cacheFilePath ? rtrim($this->cacheFilePath, "/")."/" : "";
 			$this->cacheFilePath = str_replace("/cache/all//", "/cache/all/", $this->cacheFilePath);
@@ -320,7 +323,9 @@
 						if(!$this->isPluginActive('really-simple-ssl-pro/really-simple-ssl-pro.php')){
 							if(!$this->isPluginActive('ssl-insecure-content-fixer/ssl-insecure-content-fixer.php')){
 								if(!$this->isPluginActive('https-redirection/https-redirection.php')){
-									return 0;
+									if(!$this->isPluginActive('better-wp-security/better-wp-security.php')){
+										return 0;
+									}
 								}
 							}
 						}

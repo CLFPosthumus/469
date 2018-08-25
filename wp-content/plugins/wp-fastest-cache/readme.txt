@@ -4,7 +4,7 @@ Donate link: http://profiles.wordpress.org/emrevona/
 Tags: cache, performance, wp-cache, total cache, super cache
 Requires at least: 3.3
 Tested up to: 4.9
-Stable tag: 0.8.8.3
+Stable tag: 0.8.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,14 @@ Wpfc does not support Wordpress Multisite yet.
 18. Database Cleanup
 
 == Changelog ==
+
+= 0.8.8.4 =
+* to show language option via php instead of javascript
+* to show warning if there is no zone on Cloudflare
+* to fix Uncaught SyntaxError on cdn.js [<a target="_blank" href="https://wordpress.org/support/topic/uncaught-syntaxerror-cdn-js/">Details</a>]
+* refactoring of cdn_replace_urls()
+* <strong>[FEATURE]</strong> Clear Cache via URL [<a target="_blank" href="https://www.wpfastestcache.com/features/clear-cache-via-url/">Details</a>]
+* to add webm, ogg and mp4 extensions for browser cache
 
 = 0.8.8.3 =
 * to fix Revolution Slider Error

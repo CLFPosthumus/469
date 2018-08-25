@@ -144,7 +144,7 @@
 											),
 							);
 
-			$response = wp_remote_request('https://api.cloudflare.com/client/v4/zones', $header);
+			$response = wp_remote_request('https://api.cloudflare.com/client/v4/zones/?status=active&page=1&per_page=1000', $header);
 
 			if(!$response || is_wp_error($response)){
 				$res = array("success" => false, "error_message" => $response->get_error_message());
@@ -160,8 +160,12 @@
 								$res = array("success" => true, "zoneid" => $zone_value->id);
 							}
 						}
+
+						if(!$res["success"]){
+							$res = array("success" => false, "error_message" => "No zone name ".$hostname);
+						}
 					}else{
-						$res = array("success" => false, "error_message" => "No zone name ".$hostname);
+						$res = array("success" => false, "error_message" => "There is no zone");
 					}
 				}
 			}

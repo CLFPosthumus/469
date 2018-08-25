@@ -3,7 +3,7 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
-Version: 0.8.8.3
+Version: 0.8.8.4
 Author: Emre Vona
 Author URI: http://tr.linkedin.com/in/emrevona
 Text Domain: wp-fastest-cache
@@ -164,6 +164,37 @@ GNU General Public License for more details.
 					// /?action=wpfastestcache&type=preload
 					
 					add_action('init', array($this, "create_preload_cache"), 11);
+				}
+
+				if(isset($_GET) && isset($_GET["type"]) && preg_match("/^clearcache(andminified)*$/i", $_GET["type"])){
+					// /?action=wpfastestcache&type=clearcache&token=123
+					// /?action=wpfastestcache&type=clearcacheandminified&token=123
+
+					if(isset($_GET["token"]) && $_GET["token"]){
+						if(defined("WPFC_CLEAR_CACHE_URL_TOKEN") && WPFC_CLEAR_CACHE_URL_TOKEN){
+							if(WPFC_CLEAR_CACHE_URL_TOKEN == $_GET["token"]){
+								if($this->isPluginActive("wp-fastest-cache-premium/wpFastestCachePremium.php")){
+									include_once $this->get_premium_path("mobile-cache.php");
+								}
+
+								if($_GET["type"] == "clearcache"){
+									$this->deleteCache();
+								}
+
+								if($_GET["type"] == "clearcacheandminified"){
+									$this->deleteCache(true);
+								}
+
+								die("Done");
+							}else{
+								die("Wrong token");
+							}
+						}else{
+							die("WPFC_CLEAR_CACHE_URL_TOKEN must be defined");
+						}
+					}else{
+						die("Security token must be set.");
+					}
 				}
 			}else{
 				$this->setCustomInterval();
@@ -1789,7 +1820,9 @@ GNU General Public License for more details.
 
 					$cdn->file_types = str_replace(",", "|", $cdn->file_types);
 
-					if(!preg_match("/\.(".$cdn->file_types.")/i", $matches[0])){
+					if(preg_match("/\.(".$cdn->file_types.")[\"\'\?\)\s]/i", $matches[0])){
+						//nothing
+					}else{
 						if(preg_match("/js/", $cdn->file_types)){
 							if(!preg_match("/\/revslider\/public\/assets\/js/", $matches[0])){
 								continue;

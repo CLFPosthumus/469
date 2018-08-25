@@ -471,11 +471,14 @@
 
 
 			$data = "# BEGIN LBCWpFastestCache"."\n".
-					'<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)(\.gz)?$">'."\n".
+					'<FilesMatch "\.(webm|ogg|mp4|ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)(\.gz)?$">'."\n".
 					'<IfModule mod_expires.c>'."\n".
 					'AddType application/font-woff2 .woff2'."\n".
 					'ExpiresActive On'."\n".
 					'ExpiresDefault A0'."\n".
+					'ExpiresByType video/webm A2592000'."\n".
+					'ExpiresByType video/ogg A2592000'."\n".
+					'ExpiresByType video/mp4 A2592000'."\n".
 					'ExpiresByType image/webp A2592000'."\n".
 					'ExpiresByType image/gif A2592000'."\n".
 					'ExpiresByType image/png A2592000'."\n".
@@ -1205,100 +1208,34 @@
 
 
 
-
-
-
-
-
-
-
-							<?php
-
-							$tester_arr = array(
-											// "de-DE",
-											"es_CL",
-											"es_AR",
-											"es_GT",
-											"es_PE",
-											"es_VE",
-											"es_CO",
-											"es_MX",
-											"es_ES",
-											"es-ES",
-											// "fr-FR",
-											// "fr-BE",
-											// "fr-CA",
-											// "fr-FR",
-											// "it-IT",
-											// "ja",
-											"nl-NL",
-											"pt-PT",
-											"pt-BR",
-											"tr-TR",
-											"rebootyourpc.gr",
-											"nicheadvice.co.uk",
-											"addkenmerken.net",
-											"animefantastica.com",
-											"rynofitness.com.au",
-											"margotickets.com",
-											"berkatan.com",
-											"tiikr.com",
-											"enderwaffle.com",
-											"yenihobiler.com",
-											"weensu.dk",
-											"hobiblogu.com",
-											"pembeportakal.com",
-											"artclinic.org",
-											"rogers-immobilien.de",
-											"polyamory.dating",
-											"mygamer.com",
-											"gingerdomain.com",
-											"topclassprinting.com",
-											"camilazivit.com.br",
-											"spycoupon.in",
-											"groovypost.com",
-											"parkviewhomes.info",
-											"myparkviewhomes.com",
-											"kompressorcheck.de",
-											"bsty.vn",
-											"cutflower.com",
-											"sackkarre-tests.de",
-											"schraubstock-test.de",
-											"knarrenkasten-tests.de",
-											"zahlungserinnerung-vorlage.de",
-											"eigenbeleg-vorlage.de"
-											);
-														
-							if(in_array(get_bloginfo('language'), $tester_arr) || in_array(str_replace("www.", "", $_SERVER["HTTP_HOST"]), $tester_arr)){ ?>
-
-								<?php if(class_exists("WpFastestCachePowerfulHtml")){ ?>
-									<?php if(method_exists("WpFastestCachePowerfulHtml", "lazy_load")){ ?>
-										<div class="questionCon">
-											<div class="question">Lazy Load</div>
-											<div class="inputCon">
-												<input type="hidden" value="<?php echo $wpFastestCacheLazyLoad_placeholder; ?>" id="wpFastestCacheLazyLoad_placeholder" name="wpFastestCacheLazyLoad_placeholder">
-												<input type="hidden" value="<?php echo $wpFastestCacheLazyLoad_keywords; ?>" id="wpFastestCacheLazyLoad_keywords" name="wpFastestCacheLazyLoad_keywords">
-												<input type="checkbox" <?php echo $wpFastestCacheLazyLoad; ?> id="wpFastestCacheLazyLoad" name="wpFastestCacheLazyLoad"><label for="wpFastestCacheLazyLoad">Load images and iframes when they enter the browsers viewport</label>
-											</div>
-											<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/lazy-load-reduce-http-request-and-page-load-time/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+							<?php if(class_exists("WpFastestCachePowerfulHtml")){ ?>
+								<?php if(method_exists("WpFastestCachePowerfulHtml", "lazy_load")){ ?>
+									<div class="questionCon">
+										<div class="question">Lazy Load</div>
+										<div class="inputCon">
+											<input type="hidden" value="<?php echo $wpFastestCacheLazyLoad_placeholder; ?>" id="wpFastestCacheLazyLoad_placeholder" name="wpFastestCacheLazyLoad_placeholder">
+											<input type="hidden" value="<?php echo $wpFastestCacheLazyLoad_keywords; ?>" id="wpFastestCacheLazyLoad_keywords" name="wpFastestCacheLazyLoad_keywords">
+											<input type="checkbox" <?php echo $wpFastestCacheLazyLoad; ?> id="wpFastestCacheLazyLoad" name="wpFastestCacheLazyLoad"><label for="wpFastestCacheLazyLoad">Load images and iframes when they enter the browsers viewport</label>
 										</div>
+										<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/lazy-load-reduce-http-request-and-page-load-time/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+									</div>
 
-										<?php 
-											if(file_exists(WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/templates/lazy-load.php")){
-												include_once WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/templates/lazy-load.php"; 
-											}
-										?>
+									<?php 
+										if(file_exists(WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/templates/lazy-load.php")){
+											include_once WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/templates/lazy-load.php"; 
+										}
+									?>
 
-									<?php }else{ ?>
-										<div class="questionCon update-needed">
-											<div class="question">Lazy Load</div>
-											<div class="inputCon"><input type="checkbox" id="wpFastestCacheLazyLoad" name="wpFastestCacheLazyLoad"><label for="wpFastestCacheLazyLoad">Lazy Load</label></div>
-											<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/lazy-load-reduce-http-request-and-page-load-time/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
-										</div>
-									<?php } ?>
+								<?php }else{ ?>
+									<div class="questionCon update-needed">
+										<div class="question">Lazy Load</div>
+										<div class="inputCon"><input type="checkbox" id="wpFastestCacheLazyLoad" name="wpFastestCacheLazyLoad"><label for="wpFastestCacheLazyLoad">Lazy Load</label></div>
+										<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/lazy-load-reduce-http-request-and-page-load-time/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+									</div>
 								<?php } ?>
-							
 							<?php } ?>
+							
+
 
 
 
@@ -1306,22 +1243,29 @@
 								<div class="question">Language</div>
 								<div class="inputCon">
 									<select id="wpFastestCacheLanguage" name="wpFastestCacheLanguage">
-										<option value="cn">中文</option>
-										<option value="de">Deutsch</option>
-										<option value="eng">English</option>
-										<option value="es">Español</option>
-										<option value="fr">Français</option>
-										<option value="it">Italiana</option>
-										<option value="nl">Nederlands</option>
-										<option value="ja">日本語</option>
-										<option value="pl">Polski</option>
-										<option value="pt">Português</option>
-										<option value="ro">Română</option>
-										<option value="ru">Русский</option>
-										<option value="fi">Suomi</option>
-										<option value="sv">Svenska</option>
-										<option value="tr">Türkçe</option>
-										<!-- <option value="ukr">Українська</option> -->
+										<?php
+											$lang_array = array(
+																"cn" => "中文",
+																"de" => "Deutsch",
+																"eng" => "English",
+																"es" => "Español",
+																"fr" => "Français",
+																"it" => "Italiana",
+																"nl" => "Nederlands",
+																"ja" => "日本語",
+																"pl" => "Polski",
+																"pt" => "Português",
+																"ro" => "Română",
+																"ru" => "Русский",
+																"fi" => "Suomi",
+																"sv" => "Svenska",
+																"tr" => "Türkçe"
+															);
+											foreach($lang_array as $lang_array_key => $lang_array_value){
+												$option_selected = ($this->options->wpFastestCacheLanguage == $lang_array_key) ? 'selected="selected"' : "";
+												echo '<option '.$option_selected.' value="'.$lang_array_key.'">'.$lang_array_value.'</option>';
+											}
+										?>
 									</select> 
 								</div>
 							</div>
@@ -1663,7 +1607,7 @@
 				    					if(get_bloginfo('language') == "tr-TR"){
 				    						$premium_price = "100TL";
 				    					}else{
-					    					$premium_price = "$39.99";
+					    					$premium_price = "$49.99";
 				    					}
 
 				    				?>
@@ -2295,8 +2239,6 @@
 				jQuery(document).ready(function() {
 					Wpfclang.init("<?php echo $wpFastestCacheLanguage; ?>");
 				});
-				
-				document.getElementById("wpFastestCacheLanguage").value = "<?php echo $wpFastestCacheLanguage; ?>";
 			</script>
 			<?php
 			if(isset($_SERVER["SERVER_SOFTWARE"]) && $_SERVER["SERVER_SOFTWARE"] && !preg_match("/iis/i", $_SERVER["SERVER_SOFTWARE"]) && !preg_match("/nginx/i", $_SERVER["SERVER_SOFTWARE"])){
